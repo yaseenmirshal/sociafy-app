@@ -1,0 +1,37 @@
+{
+  "name": "social-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "serve-json": "json-server --watch db.json"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.18",
+    "axios": "^1.6.8",
+    "bootstrap": "^5.3.3",
+    "date-fns": "^3.6.0",
+    "next": "14.2.1",
+    "react": "^18",
+    "react-bootstrap": "^2.10.2",
+    "react-day-picker": "^8.10.1",
+    "react-dom": "^18",
+    "react-hook-form": "^7.51.3",
+    "react-hot-toast": "^2.4.1",
+    "reactstrap": "^9.2.2",
+    "swagger-ui-react": "^5.17.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "user": [
+    {
+      "id": "6fb9",
+      "username": "yaseen",
+      "password": "1234",
+      "email": "yaseen@gmail.com",
+      "dob": "2024-05-07"
+    },
+    {
+      "id": "bbc6",
+      "username": "shuhaib malik",
+      "password": "112233",
+      "email": "malik@gmail.com",
+      "dob": "2024-05-09"
+    },
+    {
+      "id": "12e2",
+      "username": "mirshal",
+      "password": "1234",
+      "email": "mirshal5@gmail.com",
+      "dob": "2024-05-03"
+    },
+    {
+      "id": "1f5c",
+      "username": "ym",
+      "password": "112233",
+      "email": "ym@gmail.com",
+      "dob": "2024-05-14"
+    }
+  ]
+}
