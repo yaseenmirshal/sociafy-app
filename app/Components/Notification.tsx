@@ -53,7 +53,7 @@ export const Notification: React.FC<NotificationProps> = ({ isWhite }: Notificat
   return (
     <>
       <div style={{ height: '100vh', width: '355px', backgroundColor: isWhite ? '#1A0033' : 'white', color: isWhite ? 'white' : 'black', borderLeft: '1px solid #333' }} className='float-left'>
-        <h1 className='text-xl font-bold ml-7 mt-7'>Requests</h1>
+        <h1 className='text-xl font-bold ml-7 mt-7'>Request</h1>
         <div style={{ width: '345px', height: '290px', backgroundColor: isWhite ? '#1A0033' : 'white', color: isWhite ? 'white' : 'black', marginTop: '20px', borderBottom: '1px solid #333' }}>
           <div className='w-[345px] h-14'>
             <div className='float-left ml-4 mr-2' style={{ marginTop: '0px', height: '50px', width: '50px', backgroundImage: 'url(\'nazz.jpeg\')', backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: '100px 100px 100px 100px' }}></div>
