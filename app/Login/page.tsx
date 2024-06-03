@@ -29,6 +29,7 @@ function page() {
 
      localStorage.setItem("userid",pdct._id)
      localStorage.setItem("username",pdct.username)
+     localStorage.setItem("email",pdct.email)
      
 
     window.location.href='/Home'
@@ -53,7 +54,6 @@ function page() {
   const handlePasswordChange = (e:any) => {
     setPassword(e.target.value);
   };
-
 
 
   return (

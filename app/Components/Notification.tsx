@@ -10,9 +10,6 @@ type NotificationProps = {
 export const Notification: React.FC<NotificationProps> = ({ isWhite }: NotificationProps) => {
   const [users, setUsers] = useState([]);
   const [userId,setUserId] = useState([]);
-  
-
-  
 
   const getUser = async () => {
     try {
@@ -32,24 +29,20 @@ export const Notification: React.FC<NotificationProps> = ({ isWhite }: Notificat
   }, [users]);
 
   const getUserId = async (id:any)=>{
-
     try {
       let userid:any = (localStorage.getItem("userid"))
       const userId = id;
-      console.log(userId,'hhh');
+      console.log(userId);
       
       const res = await instance.put(`/user/${userId}/follow`, { _id: userid});
-      console.log(res,'kkkkkkk');
-      
-      
+      console.log(res);
+
       setUserId(res.data);
     } catch (error) {
       console.error('Error fetching users:', error);
     }
   };
   
-
-
   return (
     <>
       <div style={{ height: '100vh', width: '355px', backgroundColor: isWhite ? '#1A0033' : 'white', color: isWhite ? 'white' : 'black', borderLeft: '1px solid #333' }} className='float-left'>
@@ -94,8 +87,8 @@ export const Notification: React.FC<NotificationProps> = ({ isWhite }: Notificat
                 <button
                   className="ml-36 mt-3 px-5 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50"
                   onClick={() => getUserId(user._id)}
-                >
-                  Folllow
+                > 
+                  Follow
                 </button>
               </div>
             </div>

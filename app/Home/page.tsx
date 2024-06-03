@@ -9,14 +9,11 @@ import { toast } from 'react-hot-toast';
   import Stories from '../Components/Stories'
 
 import Createpost from '../Components/Createpost';
-
-interface HomeProps {
-  imageUrl: string;
-  description: string;
-}
+import Settings from '../Components/Settings';
 
 
-export const page: React.FC<HomeProps> = ({ imageUrl, description }) => {
+
+export const page  =(e:any)=> {
   const [imageIndex, setImageIndex] = useState(0);
   const images = ['/whitelogo.png', '/sociafy.png'];
 
@@ -29,10 +26,9 @@ export const page: React.FC<HomeProps> = ({ imageUrl, description }) => {
 
   return (
     <>
+   
 
     <div style={{width:'100%',height:'100vh',backgroundColor:'violet'}}>
-     
-    
           <div className='float-left' style={{width:'365px',height:'813px',backgroundColor:isWhite ? '#1A0033' : 'white' ,color:isWhite ? 'white' : 'black'}}>
           <Profilebox  isWhite={isWhite}/>
           <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className=" w-6 h-6  mt-10 ml-12 cursor-pointer">
@@ -52,7 +48,8 @@ export const page: React.FC<HomeProps> = ({ imageUrl, description }) => {
 <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6  mt-7 ml-12 cursor-pointer">
   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12a7.5 7.5 0 0 0 15 0m-15 0a7.5 7.5 0 1 1 15 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077 1.41-.513m14.095-5.13 1.41-.513M5.106 17.785l1.15-.964m11.49-9.642 1.149-.964M7.501 19.795l.75-1.3m7.5-12.99.75-1.3m-6.063 16.658.26-1.477m2.605-14.772.26-1.477m0 17.726-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205 12 12m6.894 5.785-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495" />
 </svg>
-<p className='cursor-pointer' style={{marginLeft:'90px',marginTop:'-25px'}}>Settings</p>
+{/* <p  className='cursor-pointer' style={{marginLeft:'90px',marginTop:'-25px'}}>Settings</p> */}
+<Settings/>
 <Link href={'./Profile'}>
 <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6  mt-7 ml-12 cursor-pointer">
   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
@@ -85,40 +82,7 @@ export const page: React.FC<HomeProps> = ({ imageUrl, description }) => {
 {/* <Modalbox/> */}
      </div>
      
-      
-      {/* <h1 className='text-xl font-bold text-white ml-7 mt-7'>Feeds</h1> */}
-
-      {/* {imageUrl && (
-      <div style={{borderRadius:'20px',width:'620px',height:'600px',backgroundColor:isWhite ? 'black' : '#DEDEDE' ,color:isWhite ? 'white' : 'black'}} className=' ml-12 mt-8'>
-      <div className='float-left ml-4' style={{marginTop:'15px', height:'45px',width:'45px',backgroundImage: 'url(\'https://cdn-icons-png.flaticon.com/512/149/149071.png\')', backgroundSize: 'cover', backgroundPosition: 'center',borderRadius:'100px 100px 100px 100px '}}></div>
-      <p  style={{padding:'25px',fontSize:'15px'}} className=' ml-12'>{localStorage.getItem("username")}</p>
-      <img style={{marginLeft:'565px',marginTop:'-50px',width:'20px',height:'20px',opacity:'0.8'}} src="dotss.png" alt="" />
-      <div style={{borderRadius:'20px',width:'570px',height:'400px', backgroundImage: `url(${imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center',marginTop:'40px',marginLeft:'25px'}} >
-      </div>
-      {description && (
-      <div style={{width:'550px'}} className='  h-14 ml-7 mt-2'>
-      <p className=' text-sm'>{localStorage.getItem("username")}. {description}</p>
-      </div>
-      )}
-      <div className='mt-2'>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="float-left w-8 h-8  mr-1 ml-6 cursor-pointer">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-</svg>
-      <h1 className='float-left  mt-1 mr-6'>1.6k</h1>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="float-left w-8 h-8 mr-1 cursor-pointer">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 0 1-.923 1.785A5.969 5.969 0 0 0 6 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337Z" />
-</svg>
-<h1 style={{paddingTop:'5px'}} className='float-left  mr-96'>454</h1>
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className=" w-8 h-8  cursor-pointer">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
-</svg>
-
-</div>
-      </div>
-      )} */}
-     
-    
-
+   
       <div style={{borderRadius:'20px',width:'620px',height:'600px',backgroundColor:isWhite ? 'black' : '#DEDEDE' ,color:isWhite ? 'white' : 'black'}} className=' ml-12 mt-8'>
       <div className='float-left ml-4' style={{marginTop:'15px', height:'45px',width:'45px',backgroundImage: 'url(\'https://car-logos.b-cdn.net/wp-content/uploads/2023/04/bmw-logo-2020-present-1024x742.webp\')', backgroundSize: 'cover', backgroundPosition: 'center',borderRadius:'100px 100px 100px 100px '}}></div>
       <p  style={{padding:'25px',fontSize:'15px'}} className=' ml-12'>bmwindia</p>
@@ -195,6 +159,7 @@ export const page: React.FC<HomeProps> = ({ imageUrl, description }) => {
       </div>
      </div> 
     <Notification isWhite={isWhite}   />
+    
 
      </div>
     </>

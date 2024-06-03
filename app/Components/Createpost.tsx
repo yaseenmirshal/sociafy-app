@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import instance from '../instence/instence';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -13,6 +13,7 @@ import { createContext } from 'react';
 import Home from '../Home/page'
 import Stories from '../Components/Stories'
 import toast from 'react-hot-toast';
+import { GlobalContext } from './context/globalContext';
 
 
 
@@ -61,21 +62,18 @@ interface NotificationProps {
 }
 
 export const Createpost: React.FC<NotificationProps> = ({ isWhite }: NotificationProps) => {
+  const {post , setPost} = useContext<any>(GlobalContext)
   
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState<any>('');
   const [imageUrl, setImageUrl] = useState(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [open, setOpen] = useState(false);
-  const [selectFile, setSelectFile] = useState(null);
-  const [post,setPost ]= useState<any>([])
   
-
- 
+  const [selectFile, setSelectFile] = useState(null);
+  
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-
 
   const handleUpload = () => {
     if (fileInputRef.current) {
@@ -120,7 +118,6 @@ export const Createpost: React.FC<NotificationProps> = ({ isWhite }: Notificatio
     } catch (error) {
       console.log(error)
     }
-    
    }
    fetchData()
 
@@ -129,18 +126,16 @@ export const Createpost: React.FC<NotificationProps> = ({ isWhite }: Notificatio
   const addPost = () => {
     if (selectFile) {
       handleApi(selectFile);   
-  
       handleClose(); 
+      setSelectFile(null);
+      setDescription(null);
+      toast.success('post added successfully')
     }
   };
 console.log(post,'postttaaaaaaaaa');
 
   return (
     <div>
-      {/* <Home imageUrl={imageUrl}/> */}
-    {/* <Data.Provider value={{imageUrl,setImageUrl}}>
-        <Home />
-    </Data.Provider> */}
       <input
         ref={fileInputRef}
         onChange={handleFile}
@@ -213,7 +208,7 @@ console.log(post,'postttaaaaaaaaa');
       <img style={{marginLeft:'565px',marginTop:'-50px',width:'20px',height:'20px',opacity:'0.8'}} src="dotss.png" alt="" />
       <div style={{borderRadius:'20px',width:'570px',height:'400px', backgroundImage: `url(${item.image})`, backgroundSize: 'cover', backgroundPosition: 'center',marginTop:'40px',marginLeft:'25px'}} >
       </div>
-     
+  
       <div style={{width:'550px'}} className='  h-14 ml-7 mt-2'>
       <p className=' text-sm'>{localStorage.getItem("username")}. {item.desc}</p>
       </div>
@@ -233,22 +228,7 @@ console.log(post,'postttaaaaaaaaa');
 </div>
       </div>
      )) }
-      
-      
 
-
-      {/* {imageUrl && (
-        <div style={{ marginTop: '20px', textAlign: 'center' }}>
-          <h3>Uploaded Image</h3>
-          <img src={imageUrl} alt="Uploaded" width={400} height={400} style={{ borderRadius: '10px' }} />
-        </div>
-      )}
-      {description && (
-        <div style={{ marginTop: '20px', textAlign: 'center' }}>
-          
-          <h1>{localStorage.getItem("username")} .{description}</h1>
-        </div>
-      )} */}
     </div>
   
   );

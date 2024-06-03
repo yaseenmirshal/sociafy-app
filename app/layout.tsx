@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 
-
+import GlobalProvider from "./Components/context/globalContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,14 +14,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Toaster/>
-        {children}</body>
+        <GlobalProvider>
+          <Toaster />
+          {children}
+        </GlobalProvider>
+      </body>
     </html>
   );
 }
