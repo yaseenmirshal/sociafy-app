@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState ,useContext} from 'react';
 import { Modal, Backdrop, Fade, Box, Typography, Button } from '@mui/material';
 import instance from '../instence/instence';
+import { GlobalContext } from './context/globalContext';
 
 const style = {
   position: 'absolute',
@@ -32,6 +33,11 @@ const Delete = () => {
     setOpen(false);
   };
   let userid:any = (localStorage.getItem("userid"))
+
+  const {post , setPost} = useContext<any>(GlobalContext)
+  
+  
+
   const handleDelete = async () => {
     try{
         const response = await instance.delete(`'/posts/${userid}`)

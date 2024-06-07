@@ -20,13 +20,11 @@ export const page  =(e:any)=> {
   const [isWhite, setIsWhite] = useState(true);
 
   const[color,setColor]=useState<any>(false)
-
   const toggleColor = () => {
     setIsWhite(!isWhite);
     setImageIndex((prevIndex) => (prevIndex === 0 ? 1 : 0));
   };
   
-
   return (
     <>
    

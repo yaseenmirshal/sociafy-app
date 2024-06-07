@@ -1,11 +1,12 @@
 'use client'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import React from 'react'
 import '/common.css' 
 import Notification from '../Components/Notification'
 import Createpost from '../Components/Createpost';
 import { GlobalContext } from '../Components/context/globalContext'
+import instance from '../instence/instence'
 // import Modalbox from '../Components/Modal/Modalbox'
 
 
@@ -13,8 +14,31 @@ function page() {
   const [imageIndex, setImageIndex] = useState(0);
   const images = ['/whitelogo.png', '/sociafy.png'];
   const {post , setPost} = useContext<any>(GlobalContext)
+  const [followers,setFollowers] = useState()
+  const [following,setFollowing] = useState()
 
   const [isWhite, setIsWhite] = useState(true);
+ let userid = localStorage.getItem('userid')
+
+  const fetchUser = async ()=>{
+    try{
+    const response = await instance.get(`/user/${userid}`)
+  const followersCount= (response.data.followers.length);
+  const followingsCount= (response.data.following.length);
+  console.log(followersCount,'followers');
+  
+  setFollowers(followersCount)
+  setFollowing(followingsCount)
+    }catch(error){
+      console.error('error');
+    }
+
+  }
+  useEffect(()=>{
+    fetchUser()
+
+  },[])
+  
 
 
   const toggleColor = () => {
@@ -72,8 +96,8 @@ function page() {
 <h1 style={{marginTop:'30px',marginLeft:'260px',}} className=' text-white text-xl font-medium mb-5'>{localStorage.getItem("username")}</h1>
 
 <p style={{marginLeft:'45px'}} className='float-left text-white'><b>28</b> posts</p> 
-<p className='float-left text-white ml-10 mr-10'><b>0</b> followers</p>  
-<p  className='text-white '><b>0</b> following</p><br/>
+<p className='float-left text-white ml-10 mr-10'><b>{followers}</b> followers</p>  
+<p  className='text-white '><b>{following}</b> following</p><br/>
 <button className=" bg-gray-700 hover:bg-gray-900 text-white ml-10 text-sm  font-medium py-1 px-3 rounded-md shadow-md transition duration-300 ease-in-out">
   Edit Profile
 </button><br/>
