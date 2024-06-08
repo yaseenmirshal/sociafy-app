@@ -14,10 +14,12 @@ function page() {
   const [imageIndex, setImageIndex] = useState(0);
   const images = ['/whitelogo.png', '/sociafy.png'];
   const {post , setPost} = useContext<any>(GlobalContext)
-  const [followers,setFollowers] = useState()
-  const [following,setFollowing] = useState()
+  
 
   const [isWhite, setIsWhite] = useState(true);
+
+  const [followers,setFollowers] = useState()
+  const [following,setFollowing] = useState()
  let userid = localStorage.getItem('userid')
 
   const fetchUser = async ()=>{

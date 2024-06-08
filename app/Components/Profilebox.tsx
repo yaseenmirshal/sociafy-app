@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField';
 import Fade from '@mui/material/Fade';
 import Backdrop from '@mui/material/Backdrop';
 import Link from 'next/link';
+import instance from '../instence/instence';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -87,6 +88,29 @@ const Profilebox: React.FC<NotificationProps> = ({ isWhite }) => {
     }
   }, [selectFile]);
 
+  const [followers,setFollowers] = useState()
+  const [following,setFollowing] = useState()
+ let userid = localStorage.getItem('userid')
+
+  const fetchUser = async ()=>{
+    try{
+    const response = await instance.get(`/user/${userid}`)
+  const followersCount= (response.data.followers.length);
+  const followingsCount= (response.data.following.length);
+  console.log(followersCount,'followers');
+  
+  setFollowers(followersCount)
+  setFollowing(followingsCount)
+    }catch(error){
+      console.error('error');
+    }
+
+  }
+  useEffect(()=>{
+    fetchUser()
+
+  },[])
+
   return (
     <>
       <div
@@ -143,8 +167,8 @@ const Profilebox: React.FC<NotificationProps> = ({ isWhite }) => {
           }}
         >
           <h2 className='ml-16 font-semibold' style={{ textAlign: 'center' }}>28</h2>
-          <h2 className='ml-20 font-semibold' style={{ textAlign: 'center' }}>0</h2>
-          <h2 className='ml-20 font-semibold' style={{ textAlign: 'center' }}>0</h2>
+          <h2 className='ml-20 font-semibold' style={{ textAlign: 'center' }}>{followers}</h2>
+          <h2 className='ml-24 font-semibold' style={{ textAlign: 'center' }}>{following}</h2>
         </div>
 
         <div className='flex items-center' style={{ color: isWhite ? 'white' : 'black' }}>
