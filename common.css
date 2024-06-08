@@ -1,45 +1,45 @@
 .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
+  display: none;
+}
 
-  @keyframes slide-left {
-    0% {
-      transform: translateX(-100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
+@keyframes slide-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
   }
-  
-  .animate-up {
-    animation: slide-up 1s ease-out;
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
+}
 
-  @keyframes slide-up {
-    0% {
-      transform: translateY(100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
-  .animate-slide-left {
-    animation: slide-left 1s ease-out;
-  }
+.animate-up {
+  animation: slide-up 1s ease-out;
+}
 
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-left {
+  animation: slide-left 1s ease-out;
+}
 
 .btn {
-  --btn-gradient: var(--btn-gradient-from),var(--btn-gradient-to);
+  --btn-gradient: var(--btn-gradient-from), var(--btn-gradient-to);
   border: 0 none;
   appearance: none;
   border-radius: 9999px;
   background-color: var(--btn-bg);
-  box-shadow: 0 0 2px 2px var(--btn-shadow), 0 0 4px 4px var(--btn-shadow), 0 0 8px 8px var(--btn-shadow);
+  box-shadow: 0 0 2px 2px var(--btn-shadow), 0 0 4px 4px var(--btn-shadow),
+    0 0 8px 8px var(--btn-shadow);
 }
 
 .btn,
@@ -72,7 +72,7 @@
   justify-content: center;
   align-items: center;
   background-color: var(--btn-bg);
-  background-image: linear-gradient(to bottom,var(--btn-gradient));
+  background-image: linear-gradient(to bottom, var(--btn-gradient));
 }
 
 .btn-blur {
@@ -102,7 +102,7 @@
 
 .btn:hover,
 .btn:active {
-  transition: transform .5s ease-in-out 0s;
+  transition: transform 0.5s ease-in-out 0s;
   transform: translateY(-1px);
 }
 
@@ -123,14 +123,13 @@
 
 @keyframes turn {
   0% {
-    transform: translateY(-50%) rotate(0deg)
+    transform: translateY(-50%) rotate(0deg);
   }
 
   to {
-    transform: translateY(-50%) rotate(1turn)
+    transform: translateY(-50%) rotate(1turn);
   }
 }
-
 
 /* 
 .label {
@@ -225,7 +224,7 @@
   right: 0;
   bottom: 0;
   background-color: var(--background);
-  transition: .5s;
+  transition: 0.5s;
   border-radius: 30px;
 }
 
@@ -239,7 +238,7 @@
   bottom: 15%;
   box-shadow: inset 8px -4px 0px 0px #fff000;
   background: var(--background);
-  transition: .5s;
+  transition: 0.5s;
 }
 
 input:checked + .slider {
@@ -250,4 +249,3 @@ input:checked + .slider:before {
   transform: translateX(100%);
   box-shadow: inset 15px -4px 0px 15px #fff000;
 }
-

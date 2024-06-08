@@ -1,35 +1,33 @@
-import React, { useState, useContext } from 'react';
-import { Modal, Backdrop, Fade, Box, Typography, Button } from '@mui/material';
-import { GlobalContext } from './context/globalContext';
+import React, { useState, useContext } from "react";
+import { Modal, Backdrop, Fade, Box, Typography, Button } from "@mui/material";
+import { GlobalContext } from "./context/globalContext";
 
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
-  borderRadius: '8px',
+  bgcolor: "background.paper",
+  borderRadius: "8px",
   boxShadow: 24,
   p: 4,
-  outline: 'none',
+  outline: "none",
 };
 
 const buttonStyle = {
-  display: 'flex',
-  justifyContent: 'flex-end',
-  marginTop: '20px',
+  display: "flex",
+  justifyContent: "flex-end",
+  marginTop: "20px",
 };
 
 interface DeleteProps {
   item: {
     id: string;
-    // Add other properties of the item object if necessary
   };
 }
 
 const Delete: React.FC<DeleteProps> = ({ item }) => {
-    
   const [open, setOpen] = useState(false);
   const { dlt } = useContext<any>(GlobalContext);
 
@@ -77,14 +75,14 @@ const Delete: React.FC<DeleteProps> = ({ item }) => {
               <Button
                 variant="outlined"
                 onClick={handleClose}
-                sx={{ color: 'text.primary', borderColor: 'text.primary' }}
+                sx={{ color: "text.primary", borderColor: "text.primary" }}
               >
                 Cancel
               </Button>
               <Button
                 variant="contained"
                 color="error"
-                onClick={() => dlt(item)} // Corrected line
+                onClick={() => dlt(item)} 
                 sx={{ marginLeft: 2 }}
               >
                 Yes, Delete

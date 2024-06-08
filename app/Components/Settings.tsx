@@ -1,64 +1,67 @@
-import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import TextField from '@mui/material/TextField';
-import Fade from '@mui/material/Fade';
-import Backdrop from '@mui/material/Backdrop';
-import instance from '../instence/instence';
-import { log } from 'console';
-import toast from 'react-hot-toast';
+import React, { useState } from "react";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import TextField from "@mui/material/TextField";
+import Fade from "@mui/material/Fade";
+import Backdrop from "@mui/material/Backdrop";
+import instance from "../instence/instence";
+import toast from "react-hot-toast";
 
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 600,
-  bgcolor: '#1c1c1c',
-  borderRadius: '10px',
+  bgcolor: "#1c1c1c",
+  borderRadius: "10px",
   boxShadow: 24,
   p: 4,
-  outline: 'none',
-  color: 'white',
+  outline: "none",
+  color: "white",
 };
 
 export const Settings = () => {
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const handleChangePassword = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
-  
+
     const data = {
-      password:password,
+      password: password,
     };
-  
+
     try {
-      const response = await instance.post('/auth/changepassword', data);
+      const response = await instance.post("/auth/changepassword", data);
       if (response.data) {
-        console.log('Password changed successfully');
-        setPassword('');
-        toast.success('Password updated')
-        handleClose()
-        
-      } 
+        console.log("Password changed successfully");
+        setPassword("");
+        toast.success("Password updated");
+        handleClose();
+      }
     } catch (error) {
-      console.error('Error changing password:', error);
+      console.error("Error changing password:", error);
     }
   };
 
   return (
     <>
-      <p onClick={handleOpen} className='cursor-pointer' style={{ marginLeft: '90px', marginTop: '-25px' }}>
+      <p
+        onClick={handleOpen}
+        className="cursor-pointer"
+        style={{ marginLeft: "90px", marginTop: "-25px" }}
+      >
         Settings
       </p>
 
-      <Modal open={open} onClose={handleClose}
+      <Modal
+        open={open}
+        onClose={handleClose}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{ timeout: 500 }}
@@ -74,16 +77,16 @@ export const Settings = () => {
               <Typography variant="subtitle1" className="text-gray-400">
                 Username
               </Typography>
-              <Typography variant="body1" className='mt-2'>
-                {localStorage.getItem('username')}
+              <Typography variant="body1" className="mt-2">
+                {localStorage.getItem("username")}
               </Typography>
             </div>
             <div>
               <Typography variant="subtitle1" className="text-gray-400 mt-7">
                 Email
               </Typography>
-              <Typography variant="body1" className='mt-2'>
-                {localStorage.getItem('email')}
+              <Typography variant="body1" className="mt-2">
+                {localStorage.getItem("email")}
               </Typography>
             </div>
             <form onSubmit={handleChangePassword} className="space-y-6 mt-4">
@@ -103,7 +106,11 @@ export const Settings = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   InputProps={{
-                    style: { color: 'white', backgroundColor: '#333333',borderRadius: '4px',},
+                    style: {
+                      color: "white",
+                      backgroundColor: "#333333",
+                      borderRadius: "4px",
+                    },
                   }}
                 />
               </div>
