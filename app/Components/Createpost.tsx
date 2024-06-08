@@ -12,6 +12,7 @@ import Stories from "../Components/Stories";
 import toast from "react-hot-toast";
 import { GlobalContext } from "./context/globalContext";
 import Delete from "./Delete";
+import { FaHeart, FaComment } from 'react-icons/fa';
 
 const style = {
   position: "absolute",
@@ -259,6 +260,7 @@ export const Createpost: React.FC<NotificationProps> = ({
                 </svg>
               )}
             </div>
+
             <TextField
               label="Description"
               variant="outlined"
@@ -297,112 +299,114 @@ export const Createpost: React.FC<NotificationProps> = ({
       <Stories isWhite={isWhite} />
 
       {post &&
-        post.map((item: any, index: any) => (
-          <div
-            key={index}
-            style={{
-              borderRadius: "20px",
-              width: "620px",
-              height: "590px",
-              backgroundColor: isWhite ? "black" : "#DEDEDE",
-              color: isWhite ? "white" : "black",
-            }}
-            className="ml-12 mt-8"
+  post.map((item: any, index: any) => (
+    <div
+      key={index}
+      style={{
+        borderRadius: "20px",
+        width: "670px",
+        height: "630px",
+        backgroundColor: isWhite ? "#1E2125" : "#DEDEDE",
+        color: isWhite ? "white" : "black",
+      }}
+      className="ml-8 mt-8"
+    >
+      <div
+        className="float-left ml-4"
+        style={{
+          marginTop: "15px",
+          height: "45px",
+          width: "45px",
+          backgroundImage:
+            "url('https://cdn-icons-png.flaticon.com/512/149/149071.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          borderRadius: "50%",
+        }}
+      ></div>
+      <div className="w-36 h-5">
+        <p
+          style={{ padding: "25px", fontSize: "15px" }}
+          className="ml-12"
+        >
+          {localStorage.getItem("username")}
+        </p>
+      </div>
+      <Delete item={item._id} />
+
+      <div
+        style={{
+          borderRadius: "20px",
+          width: "620px",
+          height: "450px",
+          backgroundImage: `url(${item.image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          marginTop: "35px",
+          marginLeft: "25px",
+        }}
+      ></div>
+
+      <div className="w-[550px] h-5 ml-7 mt-2 ">
+        <p className="text-sm mb-3">
+          {localStorage.getItem("username")}. {item.desc}
+        </p>
+      </div>
+      <div className="mt-2">
+        <svg
+          onClick={() => fetchLike(item._id)}
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="float-left w-8 h-8 mr-1 ml-6 cursor-pointer"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+          />
+        </svg>
+        <h1 className="float-left mt-1 mr-6">{likeCount}</h1>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="float-left w-8 h-8 mr-1 cursor-pointer"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 0 1-.923 1.785A5.969 5.969 0 0 0 6 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337Z"
+          />
+        </svg>
+        <h1 style={{ paddingTop: "5px" }} className="float-left">
+          0
+        </h1>
+
+        <div className="flex mt-2">
+          <input
+            type="text"
+            className="w-[300px] ml-32 px-4 py-2 rounded-l-md shadow-md border border-gray-700 bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+            placeholder="Add a Comment..."
+            value={inputValue}
+            onChange={handleChange}
+          />
+          <button
+            onClick={() => fetchComment(item._id)}
+            className="px-4 py-2 rounded-r-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none"
           >
-            <div
-              className="float-left ml-4"
-              style={{
-                marginTop: "15px",
-                height: "45px",
-                width: "45px",
-                backgroundImage:
-                  "url('https://cdn-icons-png.flaticon.com/512/149/149071.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                borderRadius: "100px 100px 100px 100px ",
-              }}
-            ></div>
-            <div className="w-36 h-5">
-              <p
-                style={{ padding: "25px", fontSize: "15px" }}
-                className="ml-12"
-              >
-                {localStorage.getItem("username")}
-              </p>
-            </div>
-            <Delete item={item._id} />
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  ))}
 
-            <div
-              style={{
-                borderRadius: "20px",
-                width: "570px",
-                height: "400px",
-                backgroundImage: `url(${item.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                marginTop: "35px",
-                marginLeft: "25px",
-              }}
-            ></div>
 
-            <div className=" w-[550px] h-5 ml-7 mt-2 ">
-              <p className="text-sm">
-                {localStorage.getItem("username")}. {item.desc}
-              </p>
-            </div>
-            <div className="mt-2">
-              <svg
-                onClick={() => fetchLike(item._id)}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="float-left w-8 h-8 mr-1 ml-6 cursor-pointer"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-                />
-              </svg>
-              <h1 className="float-left mt-1 mr-6">{likeCount}</h1>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="float-left w-8 h-8 mr-1 cursor-pointer"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 0 1-.923 1.785A5.969 5.969 0 0 0 6 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337Z"
-                />
-              </svg>
-              <h1 style={{ paddingTop: "5px" }} className="float-left">
-                0
-              </h1>
-
-              <div className="flex">
-                <input
-                  type="text"
-                  className="w-[300px] ml-8  px-4 py-2 rounded-l-md shadow-md border border-gray-700 bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:bg-gray-900"
-                  placeholder="Add a Comment..."
-                  value={inputValue}
-                  onChange={handleChange}
-                />
-                <button
-                  onClick={() => fetchComment(item._id)}
-                  className="px-4 py-2 rounded-r-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none"
-                >
-                  Submit
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
     </div>
   );
 };

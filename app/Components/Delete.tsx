@@ -43,7 +43,7 @@ const Delete: React.FC<DeleteProps> = ({ item }) => {
     <div>
       <svg
         onClick={handleOpen}
-        className="ml-[565px] mt-1 cursor-pointer"
+        className="ml-[615px] mt-1 cursor-pointer"
         xmlns="http://www.w3.org/2000/svg"
         x="0px"
         y="0px"
