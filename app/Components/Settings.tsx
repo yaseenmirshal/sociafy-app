@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -10,7 +10,7 @@ import instance from "../instence/instence";
 import toast from "react-hot-toast";
 
 const style = {
-  position: "absolute",
+  position: "absolute" as "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
@@ -26,8 +26,18 @@ const style = {
 export const Settings = () => {
   const [password, setPassword] = useState("");
   const [open, setOpen] = useState(false);
+  const [username, setUsername] = useState<string | null>(null);
+  const [email, setEmail] = useState<string | null>(null);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setUsername(localStorage.getItem("username"));
+      setEmail(localStorage.getItem("email"));
+    }
+  }, []);
 
   const handleChangePassword = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -78,7 +88,7 @@ export const Settings = () => {
                 Username
               </Typography>
               <Typography variant="body1" className="mt-2">
-                {localStorage.getItem("username")}
+                {username}
               </Typography>
             </div>
             <div>
@@ -86,7 +96,7 @@ export const Settings = () => {
                 Email
               </Typography>
               <Typography variant="body1" className="mt-2">
-                {localStorage.getItem("email")}
+                {email}
               </Typography>
             </div>
             <form onSubmit={handleChangePassword} className="space-y-6 mt-4">

@@ -12,7 +12,6 @@ import Stories from "../Components/Stories";
 import toast from "react-hot-toast";
 import { GlobalContext } from "./context/globalContext";
 import Delete from "./Delete";
-import { FaHeart, FaComment } from 'react-icons/fa';
 
 const style = {
   position: "absolute",
@@ -85,7 +84,8 @@ export const Createpost: React.FC<NotificationProps> = ({
     }
   };
 
-  const userid = localStorage.getItem("userid");
+  const userid = typeof localStorage !== 'undefined' ? localStorage.getItem("userid") : null;
+
 
   const handleApi = async (post: File) => {
     const usernteid = localStorage.getItem("userid");

@@ -53,6 +53,7 @@ const Profilebox: React.FC<NotificationProps> = ({ isWhite }) => {
   const [open, setOpen] = useState(false);
   const [selectFile, setSelectFile] = useState<File | null>(null);
   const [profile, setProfile] = useState<string | null>(null);
+  const [userid, setUserid] = useState<string | null>(null);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -89,24 +90,32 @@ const Profilebox: React.FC<NotificationProps> = ({ isWhite }) => {
 
   const [followers, setFollowers] = useState();
   const [following, setFollowing] = useState();
-  let userid = localStorage.getItem("userid");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setUserid(localStorage.getItem("userid"));
+    }
+  }, []);
 
   const fetchUser = async () => {
     try {
-      const response = await instance.get(`/user/${userid}`);
-      const followersCount = response.data.followers.length;
-      const followingsCount = response.data.following.length;
-      console.log(followersCount, "followers");
+      if (userid) {
+        const response = await instance.get(`/user/${userid}`);
+        const followersCount = response.data.followers.length;
+        const followingsCount = response.data.following.length;
+        console.log(followersCount, "followers");
 
-      setFollowers(followersCount);
-      setFollowing(followingsCount);
+        setFollowers(followersCount);
+        setFollowing(followingsCount);
+      }
     } catch (error) {
       console.error("error");
     }
   };
+
   useEffect(() => {
     fetchUser();
-  }, []);
+  }, [userid]);
 
   return (
     <>
