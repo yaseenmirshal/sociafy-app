@@ -17,8 +17,9 @@ function page() {
 
   const [followers, setFollowers] = useState();
   const [following, setFollowing] = useState();
-  let userid = localStorage.getItem("userid");
 
+ const userid = typeof localStorage !== 'undefined' ? localStorage.getItem("userid") : null;
+ 
   const fetchUser = async () => {
     try {
       const response = await instance.get(`/user/${userid}`);

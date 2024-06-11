@@ -88,7 +88,7 @@ export const Createpost: React.FC<NotificationProps> = ({
 
 
   const handleApi = async (post: File) => {
-    const usernteid = localStorage.getItem("userid");
+    const usernteid = typeof localStorage !== 'undefined' ? localStorage.getItem("userid") : null;
     const formData = new FormData();
     formData.append("file", post);
     formData.append("desc", description);
@@ -128,7 +128,7 @@ export const Createpost: React.FC<NotificationProps> = ({
 
   const fetchComment = async (id: any) => {
     console.log("Input Value:", inputValue);
-    const usernteid = localStorage.getItem("userid");
+    const usernteid = typeof localStorage !== 'undefined' ? localStorage.getItem("userid") : null;
     const datas = {
       userId: usernteid,
       text: inputValue,
@@ -159,7 +159,7 @@ export const Createpost: React.FC<NotificationProps> = ({
   };
 
   const fetchLike = async (id: any) => {
-    const usernteid = localStorage.getItem("userid");
+    const usernteid = typeof localStorage !== 'undefined' ? localStorage.getItem("userid") : null;
     const datas = {
       userId: usernteid,
     };
