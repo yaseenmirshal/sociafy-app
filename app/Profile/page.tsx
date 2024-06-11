@@ -4,7 +4,6 @@ import Link from "next/link";
 import React from "react";
 import "/common.css";
 import Notification from "../Components/Notification";
-
 import { GlobalContext } from "../Components/context/globalContext";
 import instance from "../instence/instence";
 
