@@ -7,34 +7,43 @@ import Notification from "../Components/Notification";
 import { GlobalContext } from "../Components/context/globalContext";
 import instance from "../instence/instence";
 
-function page() {
+function Page() {
   const [imageIndex, setImageIndex] = useState(0);
   const images = ["/whitelogo.png", "/sociafy.png"];
   const { post, setPost } = useContext<any>(GlobalContext);
 
   const [isWhite, setIsWhite] = useState(true);
 
-  const [followers, setFollowers] = useState();
-  const [following, setFollowing] = useState();
+  const [followers, setFollowers] = useState<number | null>(null);
+  const [following, setFollowing] = useState<number | null>(null);
+  const [userid, setUserid] = useState<string | null>(null);
 
- const userid = typeof localStorage !== 'undefined' ? localStorage.getItem("userid") : null;
- 
-  const fetchUser = async () => {
-    try {
-      const response = await instance.get(`/user/${userid}`);
-      const followersCount = response.data.followers.length;
-      const followingsCount = response.data.following.length;
-      console.log(followersCount, "followers");
-
-      setFollowers(followersCount);
-      setFollowing(followingsCount);
-    } catch (error) {
-      console.error("error");
-    }
-  };
   useEffect(() => {
-    fetchUser();
+    if (typeof window !== "undefined") {
+      const id = localStorage.getItem("userid");
+      setUserid(id);
+    }
   }, []);
+
+  useEffect(() => {
+    if (userid) {
+      const fetchUser = async () => {
+        try {
+          const response = await instance.get(`/user/${userid}`);
+          const followersCount = response.data.followers.length;
+          const followingsCount = response.data.following.length;
+          console.log(followersCount, "followers");
+
+          setFollowers(followersCount);
+          setFollowing(followingsCount);
+        } catch (error) {
+          console.error("error");
+        }
+      };
+
+      fetchUser();
+    }
+  }, [userid]);
 
   const toggleColor = () => {
     setIsWhite(!isWhite);
@@ -237,7 +246,7 @@ function page() {
             style={{ marginTop: "30px", marginLeft: "260px" }}
             className=" text-white text-xl font-medium mb-5"
           >
-            {localStorage.getItem("username")}
+            {typeof window !== "undefined" ? localStorage.getItem("username") : ""}
           </h1>
 
           <p style={{ marginLeft: "45px" }} className="float-left text-white">
@@ -281,4 +290,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
