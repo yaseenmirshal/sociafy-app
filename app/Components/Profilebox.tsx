@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect,useContext } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -8,6 +8,7 @@ import Fade from "@mui/material/Fade";
 import Backdrop from "@mui/material/Backdrop";
 import Link from "next/link";
 import instance from "../instence/instence";
+import { GlobalContext } from "./context/globalContext";
 
 const style = {
   position: "absolute" as "absolute",
@@ -50,6 +51,7 @@ type NotificationProps = {
 
 const Profilebox: React.FC<NotificationProps> = ({ isWhite }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { post } = useContext<any>(GlobalContext);
   const [open, setOpen] = useState(false);
   const [selectFile, setSelectFile] = useState<File | null>(null);
   const [profile, setProfile] = useState<string | null>(null);
@@ -96,13 +98,14 @@ const Profilebox: React.FC<NotificationProps> = ({ isWhite }) => {
       setUserid(localStorage.getItem("userid"));
     }
   }, []);
-
+const postCount = post.length;
   const fetchUser = async () => {
     try {
       if (userid) {
         const response = await instance.get(`/user/${userid}`);
         const followersCount = response.data.followers.length;
         const followingsCount = response.data.following.length;
+        
         console.log(followersCount, "followers");
 
         setFollowers(followersCount);
@@ -182,7 +185,7 @@ const Profilebox: React.FC<NotificationProps> = ({ isWhite }) => {
           }}
         >
           <h2 className="ml-16 font-semibold" style={{ textAlign: "center" }}>
-            28
+            {postCount}
           </h2>
           <h2 className="ml-20 font-semibold" style={{ textAlign: "center" }}>
             {followers}

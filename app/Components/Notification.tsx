@@ -65,12 +65,12 @@ export const Notification: React.FC<NotificationProps> = ({
         }}
         className="float-left"
       >
-        <h1 className="text-xl font-bold ml-7 mt-7">Request</h1>
-        <div
+        {/* <h1 className="text-xl font-bold ml-7 mt-7">Request</h1> */}
+        {/* <div
           style={{
             width: "345px",
             height: "290px",
-            backgroundColor: isWhite ? "#1A0033" : "white",
+            backgroundColor: isWhite ? "red" : "white",
             color: isWhite ? "white" : "black",
             marginTop: "20px",
             borderBottom: "1px solid #333",
@@ -159,7 +159,7 @@ export const Notification: React.FC<NotificationProps> = ({
           <div className="flex justify-center w-[345px] h-9 mt-3">
             <p className="mt-5 text-sm text-blue-500">View All Requests</p>
           </div>
-        </div>
+        </div> */}
 
         <h1 className="text-xl font-bold ml-7 mt-8">Suggestions</h1>
         <div
@@ -167,7 +167,7 @@ export const Notification: React.FC<NotificationProps> = ({
             backgroundColor: isWhite ? "#1A0033" : "white",
             color: isWhite ? "white" : "black",
           }}
-          className="w-[345px] h-[350px] mt-5 mb-5 overflow-auto"
+          className="w-[345px] h-[690px] mt-5 mb-5 overflow-auto"
         >
           {users.map((user: any) => (
             <div key={user._id}>

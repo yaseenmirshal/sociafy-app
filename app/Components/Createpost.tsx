@@ -194,6 +194,10 @@ export const Createpost: React.FC<NotificationProps> = ({
     }
   };
 
+
+
+
+  
   return (
     <div>
       <input
@@ -298,19 +302,20 @@ export const Createpost: React.FC<NotificationProps> = ({
 
       <Stories isWhite={isWhite} />
 
-      {post &&
-  post.map((item: any, index: any) => (
+      {post && post.map((item: any, index: any) => (
+   
     <div
       key={index}
       style={{
         borderRadius: "20px",
         width: "670px",
-        height: "630px",
+        height: "670px",
         backgroundColor: isWhite ? "#1E2125" : "#DEDEDE",
         color: isWhite ? "white" : "black",
       }}
       className="ml-8 mt-8"
     >
+      
       <div
         className="float-left ml-4"
         style={{
@@ -324,6 +329,7 @@ export const Createpost: React.FC<NotificationProps> = ({
           borderRadius: "50%",
         }}
       ></div>
+      
       <div className="w-36 h-5">
         <p
           style={{ padding: "25px", fontSize: "15px" }}
@@ -348,6 +354,8 @@ export const Createpost: React.FC<NotificationProps> = ({
       ></div>
 
       <div className="w-[550px] h-5 ml-7 mt-2 ">
+
+        
         <p className="text-sm mb-3">
           {localStorage.getItem("username")}. {item.desc}
         </p>
@@ -368,7 +376,8 @@ export const Createpost: React.FC<NotificationProps> = ({
             d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
           />
         </svg>
-        <h1 className="float-left mt-1 mr-6">{likeCount}</h1>
+        <h1 className="float-left mt-1 mr-6">{item.likes.length}</h1>
+        
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -401,9 +410,23 @@ export const Createpost: React.FC<NotificationProps> = ({
           >
             Submit
           </button>
+
         </div>
+        <div className="w-[300px] h-[40px] ml-5 overflow-auto">
+            {item.comments && item.comments.length > 0 ? (
+              <div>
+                <p>Comments:</p>
+                {item.comments.map((comment: any, commentIndex: any) => (
+                  <p key={commentIndex}>{comment.text}</p>
+                ))}
+              </div>
+            ) : (
+              <p>No comments for this post.</p>
+            )}
+             </div>
       </div>
     </div>
+    
   ))}
 
 

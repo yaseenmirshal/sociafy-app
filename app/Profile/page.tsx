@@ -6,14 +6,15 @@ import "/common.css";
 import Notification from "../Components/Notification";
 import { GlobalContext } from "../Components/context/globalContext";
 import instance from "../instence/instence";
+import Settings from "../Components/Settings";
 
 function Page() {
   const [imageIndex, setImageIndex] = useState(0);
   const images = ["/whitelogo.png", "/sociafy.png"];
-  const { post, setPost } = useContext<any>(GlobalContext);
+  const { post } = useContext<any>(GlobalContext);
 
   const [isWhite, setIsWhite] = useState(true);
-
+  const postCount = post.length
   const [followers, setFollowers] = useState<number | null>(null);
   const [following, setFollowing] = useState<number | null>(null);
   const [userid, setUserid] = useState<string | null>(null);
@@ -164,6 +165,7 @@ function Page() {
           >
             Settings
           </p>
+          <Settings/>
           <Link href={"./Profile"}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -250,7 +252,7 @@ function Page() {
           </h1>
 
           <p style={{ marginLeft: "45px" }} className="float-left text-white">
-            <b>28</b> posts
+            <b>{postCount}</b> posts
           </p>
           <p className="float-left text-white ml-10 mr-10">
             <b>{followers}</b> followers
