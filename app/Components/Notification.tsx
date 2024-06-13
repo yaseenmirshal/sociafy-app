@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import instance from "../instence/instence";
+import { GlobalContext } from "./context/globalContext";
 
 type NotificationProps = {
   isWhite: boolean;
@@ -10,10 +11,13 @@ type NotificationProps = {
 export const Notification: React.FC<NotificationProps> = ({
   isWhite,
 }: NotificationProps) => {
+  // const {  users, setUsers } = useContext<any>(GlobalContext);
   const [users, setUsers] = useState([]);
   const [followedUsers, setFollowedUsers] = useState<{
     [key: string]: boolean;
   }>({});
+
+  
 
   const getUser = async () => {
     try {

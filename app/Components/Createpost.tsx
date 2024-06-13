@@ -64,6 +64,10 @@ export const Createpost: React.FC<NotificationProps> = ({
   const [selectFile, setSelectFile] = useState<File | null>(null);
   const [likeCount, setLikecount] = useState<any>([]);
 
+// const [username,setUsername ] =useState('');
+
+  const [users,setUsers] = useState<any>([]);
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -76,6 +80,38 @@ export const Createpost: React.FC<NotificationProps> = ({
     }
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await instance.get("/user");
+        setUsers(response.data); 
+      } catch (error) {
+        console.log("Error fetching users:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+
+
+  
+  useEffect(() => {
+  console.log("Users:");
+  users.forEach((user: any) => {
+    // console.log(user._id);
+
+    const matchingPost = post.find((item: any) => item.userId);
+    // console.log(matchingPost,'this is mathcing post ');
+    console.log(matchingPost.userId,'this is matching post ');
+    
+    
+    if (matchingPost) {
+      console.log(`Username for ${matchingPost}`);
+    }
+  });
+ 
+}, [users, post]);
+
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setSelectFile(e.target.files[0]);
@@ -86,13 +122,17 @@ export const Createpost: React.FC<NotificationProps> = ({
 
   const userid = typeof localStorage !== 'undefined' ? localStorage.getItem("userid") : null;
 
+  
+
 
   const handleApi = async (post: File) => {
     const usernteid = typeof localStorage !== 'undefined' ? localStorage.getItem("userid") : null;
+    const usernamee = typeof localStorage !== 'undefined' ? localStorage.getItem("username") : null;
     const formData = new FormData();
     formData.append("file", post);
     formData.append("desc", description);
     formData.append("userId", usernteid!);
+    formData.append ("username",usernamee!)
     try {
       const response = await instance.post("/createPost", formData, {
         headers: { "Content-Type": "multipart/form-data" },
@@ -194,10 +234,6 @@ export const Createpost: React.FC<NotificationProps> = ({
     }
   };
 
-
-
-
-  
   return (
     <div>
       <input
@@ -303,14 +339,14 @@ export const Createpost: React.FC<NotificationProps> = ({
       <Stories isWhite={isWhite} />
 
       {post && post.map((item: any, index: any) => (
-   
+       
     <div
       key={index}
       style={{
         borderRadius: "20px",
         width: "670px",
         height: "670px",
-        backgroundColor: isWhite ? "#1E2125" : "#DEDEDE",
+        backgroundColor: isWhite ? "black" : "#DEDEDE",
         color: isWhite ? "white" : "black",
       }}
       className="ml-8 mt-8"
@@ -335,7 +371,7 @@ export const Createpost: React.FC<NotificationProps> = ({
           style={{ padding: "25px", fontSize: "15px" }}
           className="ml-12"
         >
-          {localStorage.getItem("username")}
+          {item.username}
         </p>
       </div>
       <Delete item={item._id} />
@@ -393,7 +429,7 @@ export const Createpost: React.FC<NotificationProps> = ({
           />
         </svg>
         <h1 style={{ paddingTop: "5px" }} className="float-left">
-          0
+          {item?item.comments.length:0}
         </h1>
 
         <div className="flex mt-2">
@@ -415,7 +451,7 @@ export const Createpost: React.FC<NotificationProps> = ({
         <div className="w-[300px] h-[40px] ml-5 overflow-auto">
             {item.comments && item.comments.length > 0 ? (
               <div>
-                <p>Comments:</p>
+                <p className="text-sm">Comments</p>
                 {item.comments.map((comment: any, commentIndex: any) => (
                   <p key={commentIndex}>{comment.text}</p>
                 ))}

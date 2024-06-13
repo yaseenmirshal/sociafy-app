@@ -32,12 +32,25 @@ interface GlobalProviderProps {
 
 export default function GlobalProvider({ children }: GlobalProviderProps) {
   const [post, setPost] = useState<Post[]>([]);
+  const [users, setUsers] = useState([]);
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+
+  const getUser = async () => {
+    try {
+      const response = await instance.get("/user");
+      setUsers(response.data);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
+  };
+
   type PostId = string;
+
+
 
   const dlt: any = async (postId: PostId) => {
     const userd = localStorage.getItem("userid");
