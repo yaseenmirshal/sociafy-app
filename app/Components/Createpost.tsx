@@ -12,6 +12,7 @@ import Stories from "../Components/Stories";
 import toast from "react-hot-toast";
 import { GlobalContext } from "./context/globalContext";
 import Delete from "./Delete";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const style = {
   position: "absolute",
@@ -64,6 +65,8 @@ export const Createpost: React.FC<NotificationProps> = ({
   const [selectFile, setSelectFile] = useState<File | null>(null);
   const [likeCount, setLikecount] = useState<any>([]);
 
+  const [loading, setLoading] = useState(false);
+
 // const [username,setUsername ] =useState('');
 
   const [users,setUsers] = useState<any>([]);
@@ -82,11 +85,15 @@ export const Createpost: React.FC<NotificationProps> = ({
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const response = await instance.get("/user");
         setUsers(response.data); 
       } catch (error) {
         console.log("Error fetching users:", error);
+      }
+      finally {
+        setLoading(false); // End loading
       }
     };
     fetchData();
@@ -100,9 +107,9 @@ export const Createpost: React.FC<NotificationProps> = ({
   users.forEach((user: any) => {
     // console.log(user._id);
 
-    const matchingPost = post.find((item: any) => item.userId);
+    const matchingPost = post.find((item: any) => item.userId === user._id);
     // console.log(matchingPost,'this is mathcing post ');
-    console.log(matchingPost.userId,'this is matching post ');
+    // console.log(matchingPost.userId,'this is matching post ');
     
     
     if (matchingPost) {
@@ -128,6 +135,8 @@ export const Createpost: React.FC<NotificationProps> = ({
   const handleApi = async (post: File) => {
     const usernteid = typeof localStorage !== 'undefined' ? localStorage.getItem("userid") : null;
     const usernamee = typeof localStorage !== 'undefined' ? localStorage.getItem("username") : null;
+  
+    
     const formData = new FormData();
     formData.append("file", post);
     formData.append("desc", description);
@@ -336,7 +345,16 @@ export const Createpost: React.FC<NotificationProps> = ({
         </Fade>
       </Modal>
 
-      <Stories isWhite={isWhite} />
+      <Data.Provider value={likeCount}>
+        {loading ? (
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+            <ClipLoader size={150} color={"#123abc"} loading={loading} />
+          </div>
+        ) : (
+          <Stories  isWhite={isWhite} />
+        )}
+      </Data.Provider>
+      {/* <Stories isWhite={isWhite} /> */}
 
       {post && post.map((item: any, index: any) => (
        
@@ -389,9 +407,7 @@ export const Createpost: React.FC<NotificationProps> = ({
         }}
       ></div>
 
-      <div className="w-[550px] h-5 ml-7 mt-2 ">
-
-        
+      <div className="overflow-auto w-[550px] h-5 ml-7 mt-2 ">
         <p className="text-sm mb-3">
           {localStorage.getItem("username")}. {item.desc}
         </p>

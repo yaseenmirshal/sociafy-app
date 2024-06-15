@@ -23,6 +23,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.51.3",
     "react-hot-toast": "^2.4.1",
+    "react-spinners": "^0.13.8",
     "reactstrap": "^9.2.2",
     "swagger-ui-react": "^5.17.6"
   },
