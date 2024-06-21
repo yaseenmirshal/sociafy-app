@@ -24,7 +24,7 @@ const page = (e: any) => {
     <>
       <div
      className="feedbox"
-        style={{ width: "100%", height: "100vh", backgroundColor: "violet" }}
+        style={{ width: "100%", height: "100vh", backgroundColor:isWhite ? "#1A0033" : "white"}}
       >
         <div
           className="homesidebar float-left"

@@ -261,9 +261,56 @@ input:checked + .slider:before {
     display: none;
   }
   .feedbox{
+    /* display: none; */
     width: max-content !important;
   }
-
+  .postdiv{
+    margin-left:20px;
+    width: 320px !important;
+    height: 590px !important;
+    
+  }
+  .postimg{
+    width: 290px !important;
+    height: 320px !important;
+    margin-left: 15px !important;
+    border-radius: 15px !important;
+  }
+  .commentdiv{
+    float: left;
+    margin-left: 15px;
+    
+  }
+  .commentbox{
+    margin-left: 0px;
+    padding: 0px !important;
+    width: 200px !important;
+  }
+  .descdiv{
+    width: 280px !important;
+  }
+  .deletebox{
+    margin-left: 270px !important;
+  }
+  .storydiv{
+    width: 50px !important;
+    height: 50px !important;
+    margin-left: 10px !important;
+  }
+  .sotryhiden{
+    display: none;
+  }
+  .understorydiv{
+    height: 0px !important;
+  }
+  .plus{
+    margin-top: 10px ;
+   
+  }
+  .addstorydiv{
+    width: 50px !important;
+    height: 50px !important;
+  }
 
 }
 

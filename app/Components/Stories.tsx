@@ -12,7 +12,7 @@ export const Stories: React.FC<NotificationProps> = ({
       <div>
         <h1 className="text-xl font-bold ml-7 mt-7">Stories</h1>
         <div
-          className="float-left ml-7 flex justify-center border-2 border-slate-400 border-dashed cursor-pointer"
+          className="addstorydiv float-left ml-7 flex justify-center border-2 border-slate-400 border-dashed cursor-pointer"
           style={{
             marginTop: "30px",
             height: "70px",
@@ -27,7 +27,7 @@ export const Stories: React.FC<NotificationProps> = ({
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="float-left w-6 h-6  mt-5"
+            className="plus float-left w-6 h-6  mt-5"
           >
             <path
               strokeLinecap="round"
@@ -37,7 +37,7 @@ export const Stories: React.FC<NotificationProps> = ({
           </svg>
         </div>
         <div
-          className="border-2  border-indigo-600 float-left ml-7"
+          className="storydiv border-2  border-indigo-600 float-left ml-7"
           style={{
             marginTop: "30px",
             height: "70px",
@@ -50,7 +50,7 @@ export const Stories: React.FC<NotificationProps> = ({
           }}
         ></div>
         <div
-          className="border-2  border-indigo-600 float-left ml-7"
+          className="storydiv border-2  border-indigo-600 float-left ml-7"
           style={{
             marginTop: "30px",
             height: "70px",
@@ -63,7 +63,7 @@ export const Stories: React.FC<NotificationProps> = ({
           }}
         ></div>
         <div
-          className="border-2  border-indigo-600 float-left ml-7"
+          className="storydiv border-2  border-indigo-600 float-left ml-7"
           style={{
             marginTop: "30px",
             height: "70px",
@@ -76,7 +76,7 @@ export const Stories: React.FC<NotificationProps> = ({
           }}
         ></div>
         <div
-          className="border-2  border-indigo-600 float-left ml-7"
+          className="storydiv border-2  border-indigo-600 float-left ml-7"
           style={{
             marginTop: "30px",
             height: "70px",
@@ -88,7 +88,7 @@ export const Stories: React.FC<NotificationProps> = ({
           }}
         ></div>
         <div
-          className="border-2  border-indigo-600 float-left ml-7"
+          className="sotryhiden border-2  border-indigo-600 float-left ml-7"
           style={{
             marginTop: "30px",
             height: "70px",
@@ -101,7 +101,7 @@ export const Stories: React.FC<NotificationProps> = ({
           }}
         ></div>
         <div
-          className="border-2  border-indigo-600 float-left ml-7"
+          className="sotryhiden border-2  border-indigo-600 float-left ml-7"
           style={{
             marginTop: "30px",
             height: "70px",
@@ -119,27 +119,27 @@ export const Stories: React.FC<NotificationProps> = ({
           backgroundColor: isWhite ? "#1A0033" : "white",
           color: isWhite ? "white" : "black",
         }}
-        className=" w-1/1 h-4 mt-28"
+        className="understorydiv w-1/1 h-4 mt-28"
       >
-        <p style={{ fontSize: "12px" }} className="float-left ml-8 ">
+        <p style={{ fontSize: "12px" }} className="sotryhiden float-left ml-8 ">
           Add Story
         </p>
-        <p style={{ fontSize: "12px" }} className="float-left  ml-10">
+        <p style={{ fontSize: "12px" }} className="sotryhiden float-left  ml-10">
           cristiano
         </p>
-        <p style={{ fontSize: "12px" }} className="float-left   ml-14 ">
+        <p style={{ fontSize: "12px" }} className="sotryhiden float-left   ml-14 ">
           dq salmaan
         </p>
-        <p style={{ fontSize: "12px" }} className="float-left   ml-9">
+        <p style={{ fontSize: "12px" }} className="sotryhiden float-left   ml-9">
           t.shelby
         </p>
-        <p style={{ fontSize: "12px" }} className="float-left   ml-12">
+        <p style={{ fontSize: "12px" }} className="sotryhiden float-left   ml-12">
           Elon musk
         </p>
-        <p style={{ fontSize: "12px" }} className="float-left  ml-12">
+        <p style={{ fontSize: "12px" }} className="sotryhiden float-left  ml-12">
           Tony stark
         </p>
-        <p style={{ fontSize: "12px" }} className="float-left   ml-10">
+        <p style={{ fontSize: "12px" }} className="sotryhiden float-left   ml-10">
           alnassr
         </p>
       </div>

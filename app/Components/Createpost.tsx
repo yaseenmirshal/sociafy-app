@@ -368,7 +368,7 @@ export const Createpost: React.FC<NotificationProps> = ({
         backgroundColor: isWhite ? "black" : "#DEDEDE",
         color: isWhite ? "white" : "black",
       }}
-      className="ml-8 mt-8"
+      className="postdiv ml-8 mt-8"
     >
       
       <div
@@ -390,12 +390,13 @@ export const Createpost: React.FC<NotificationProps> = ({
           style={{ padding: "25px", fontSize: "15px" }}
           className="ml-12"
         >
-          {item.username}
+         {localStorage.getItem("username")}
         </p>
       </div>
       <Delete item={item._id} />
 
       <div
+      className="postimg"
         style={{
           borderRadius: "20px",
           width: "620px",
@@ -408,7 +409,7 @@ export const Createpost: React.FC<NotificationProps> = ({
         }}
       ></div>
 
-      <div className="overflow-auto w-[550px] h-5 ml-7 mt-2 ">
+      <div className="descdiv overflow-auto w-[550px] h-5 ml-7 mt-2 ">
         <p className="text-sm mb-3">
           {localStorage.getItem("username")}. {item.desc}
         </p>
@@ -449,10 +450,10 @@ export const Createpost: React.FC<NotificationProps> = ({
           {/* {item?item.comments.length:0} */}
         </h1>
 
-        <div className="flex mt-2">
+        <div className="commentdiv flex mt-2">
           <input
             type="text"
-            className="w-[300px] ml-32 px-4 py-2 rounded-l-2xl shadow-md border border-gray-700 bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+            className="commentbox w-[300px] ml-32 px-4 py-2 rounded-l-2xl shadow-md border border-gray-700 bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
             placeholder="Add a Comment..."
             value={inputValue}
             onChange={handleChange}
@@ -465,7 +466,7 @@ export const Createpost: React.FC<NotificationProps> = ({
           </button>
 
         </div>
-        <div className="w-[300px] h-[40px] ml-5 overflow-auto">
+        <div className=" w-[300px] h-[40px] ml-5 overflow-auto">
             {item.comments && item.comments.length > 0 ? (
               <div>
                 <p className="text-sm">Comments</p>
