@@ -23,10 +23,11 @@ const page = (e: any) => {
   return (
     <>
       <div
+     className="feedbox"
         style={{ width: "100%", height: "100vh", backgroundColor: "violet" }}
       >
         <div
-          className="float-left"
+          className="homesidebar float-left"
           style={{
             width: "365px",
             height: "813px",

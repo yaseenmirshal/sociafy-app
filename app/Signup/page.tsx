@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import axios from "axios";
+import '/common.css'
 
 function Page() {
   const [username, setUsername] = useState("");
@@ -51,6 +52,7 @@ function Page() {
     <>
       <Link href={"./"}>
         <img
+        className="signsoc"
           style={{
             width: "180px",
             marginLeft: "610px",
@@ -62,22 +64,23 @@ function Page() {
         />
       </Link>
       <img
-        className="float-left mt-14 ml-14 animate-slide-left"
+        className="signilu float-left mt-14 ml-14 animate-slide-left"
         style={{ width: "700px", height: "700px" }}
         src="loginn.png"
         alt="logimg"
       />
       <div
         style={{ position: "absolute", marginLeft: "645px" }}
-        className="float-left w-1/2 h-screen "
+        className="signdiv float-left w-1/2 h-screen "
       >
-        <div className="ml-48 pt-44">
-          <h1
+        <div className="sign2div ml-48 pt-44">
+          <div className="glad"><h1
             style={{ marginTop: "-50px" }}
             className="text-3xl ml-5 font-medium"
           >
             Glad to see you!
-          </h1>
+          </h1></div>
+          
           <form onSubmit={handleSubmit}>
             <div className="w-80 mt-7">
               <div className="relative w-full min-w-[200px] h-10">
@@ -150,10 +153,11 @@ function Page() {
           </form>
           <br />
 
-          <button className="w-80 mt-5 bg-white hover:bg-gray-200 text-gray-600 hover:text-black py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out">
+          <button className="google w-80 mt-5 bg-white hover:bg-gray-200 text-gray-600 hover:text-black py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out">
             Sign up with Google
           </button>
           <img
+          className="googlogo"
             style={{
               width: "20px",
               height: "20px",
@@ -164,8 +168,8 @@ function Page() {
             src="goog.webp"
             alt=""
           />
-
-          <h3 className="mt-3">Already have an account?</h3>
+          <div className="already"> <h3 className="mt-3">Already have an account?</h3></div>
+         
           <Link href={"./Login"}>
             <p
               style={{

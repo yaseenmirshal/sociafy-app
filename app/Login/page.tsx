@@ -44,7 +44,6 @@ function page() {
   }
      
      
-// })};
  const handleUsernameChange = (e:any) => {  
     setEmail(e.target.value)
     setUsername(e.target.value);
@@ -57,10 +56,10 @@ function page() {
 
   return (
     <>  
-    <Link href={'./'}><img style={{width:'180px',marginLeft:'610px',marginTop:'25px',marginRight:'100px'}} src="sociafy.png" alt="sociafy logo" /></Link>
-    <img className='float-left mt-16 ml-14 animate-up' style={{width:'650px',height:'650px'}} src="welcome.png" alt="logimg" />
+    <Link href={'./'}><img className='signsoc' style={{width:'180px',marginLeft:'610px',marginTop:'25px',marginRight:'100px'}} src="sociafy.png" alt="sociafy logo" /></Link>
+    <img className='superman float-left mt-16 ml-14 animate-up' style={{width:'650px',height:'650px'}} src="welcome.png" alt="logimg" />
     <div className='float-left w-1/2 h-screen '>
-<div className='ml-48 pt-44'>
+<div className='logdiv ml-48 pt-44'>
      <h1 className="text-3xl font-medium mt-14">Welcome.</h1>
 <form onSubmit={handleSubmit}>
      <div className="w-80 mt-9">
@@ -102,7 +101,7 @@ function page() {
 <br></br>
 </form>
 
-<h3 className='mt-3'>Don't have an account?</h3>
+<h3 className='dont mt-3'>Don't have an account?</h3>
 <Link href={'./Signup'}>
 <p style={{position:'absolute',marginTop:'-23px',marginLeft:'185px'}} className='text-blue-600'>
  <u>Signup</u>
@@ -115,4 +114,4 @@ function page() {
   )
 }
 
-export default page
+export default page;

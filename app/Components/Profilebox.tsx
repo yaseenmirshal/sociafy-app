@@ -9,6 +9,7 @@ import Backdrop from "@mui/material/Backdrop";
 import Link from "next/link";
 import instance from "../instence/instence";
 import { GlobalContext } from "./context/globalContext";
+import '/common.css'
 
 const style = {
   position: "absolute" as "absolute",
@@ -123,7 +124,7 @@ const postCount = post.length;
   return (
     <>
       <div
-        className="float-left w-[365px] h-[260px] mb-14"
+        className="profilebox float-left w-[365px] h-[260px] mb-14 prof-div"
         style={{
           backgroundColor: isWhite ? "#1A0033" : "white",
           color: isWhite ? "white" : "black",

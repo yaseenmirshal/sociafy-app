@@ -42,12 +42,9 @@ export const Notification: React.FC<NotificationProps> = ({
       const isFollowed = followedUsers[id] || false;
 
       const endpoint = isFollowed
-        ? `/user/${id}/unfollow`
-        : `/user/${id}/follow`;
+        ? `/user/${id}/unfollow`: `/user/${id}/follow`;
       const response = await instance.put(endpoint, { _id: userid });
-
       console.log(response);
-
       setFollowedUsers((prevState) => ({
         ...prevState,
         [id]: !isFollowed,
@@ -67,103 +64,9 @@ export const Notification: React.FC<NotificationProps> = ({
           color: isWhite ? "white" : "black",
           borderLeft: "1px solid #333",
         }}
-        className="float-left"
+        className="notification float-left"
       >
-        {/* <h1 className="text-xl font-bold ml-7 mt-7">Request</h1> */}
-        {/* <div
-          style={{
-            width: "345px",
-            height: "290px",
-            backgroundColor: isWhite ? "red" : "white",
-            color: isWhite ? "white" : "black",
-            marginTop: "20px",
-            borderBottom: "1px solid #333",
-          }}
-        >
-          <div className="w-[345px] h-14">
-            <div
-              className="float-left ml-4 mr-2"
-              style={{
-                marginTop: "0px",
-                height: "50px",
-                width: "50px",
-                backgroundImage: "url('nazz.jpeg')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                borderRadius: "100px 100px 100px 100px",
-              }}
-            ></div>
-            <h3 className="ml-2 text-[15px]">
-              <b>nn.azal</b>
-            </h3>
-            <p className="text-gray-400 text-[13px]">
-              {" "}
-              wants to add you to friends
-            </p>
-            <button className="text-blue-500 mr-2">Accept</button>
-            <button className="text-gray-300 hover:text-red-500">
-              Decline
-            </button>
-          </div>
-          <br></br>
-
-          <div className="w-[345px] h-14">
-            <div
-              className="float-left ml-4 mr-2"
-              style={{
-                marginTop: "0px",
-                height: "50px",
-                width: "50px",
-                backgroundImage: "url('badsha.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                borderRadius: "100px 100px 100px 100px",
-              }}
-            ></div>
-            <h3 className="ml-2 text-[15px]">
-              <b>mhd.badsha</b>
-            </h3>
-            <p className="text-gray-400 text-[13px]">
-              {" "}
-              wants to add you to friends
-            </p>
-            <button className="text-blue-500 mr-2">Accept</button>
-            <button className="text-gray-300 hover:text-red-500">
-              Decline
-            </button>
-          </div>
-          <br />
-
-          <div className="w-[345px] h-14">
-            <div
-              className="float-left ml-4 mr-2"
-              style={{
-                marginTop: "0px",
-                height: "50px",
-                width: "50px",
-                backgroundImage: "url('ali.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                borderRadius: "100px 100px 100px 100px",
-              }}
-            ></div>
-            <h3 className="ml-2 text-[15px]">
-              <b>alishan_gafoor</b>
-            </h3>
-            <p className="text-gray-400 text-[13px]">
-              {" "}
-              wants to add you to friends
-            </p>
-            <button className="text-blue-500 mr-2">Accept</button>
-            <button className="text-gray-300 hover:text-red-500">
-              Decline
-            </button>
-          </div>
-
-          <div className="flex justify-center w-[345px] h-9 mt-3">
-            <p className="mt-5 text-sm text-blue-500">View All Requests</p>
-          </div>
-        </div> */}
+        
 
         <h1 className="text-xl font-bold ml-7 mt-8">Suggestions</h1>
         <div

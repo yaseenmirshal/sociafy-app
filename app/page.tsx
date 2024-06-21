@@ -1,9 +1,12 @@
 import Link from "next/link";
+import '/common.css'
+
 export default function Home() {
   return (
     <>
       <div className="  flex items-center ">
         <img
+        className="socimg"
           style={{
             width: "210px",
             marginLeft: "50px",
@@ -15,29 +18,30 @@ export default function Home() {
         />
         <p
           style={{ marginLeft: "500px" }}
-          className=" mt-7 hover:cursor-pointer hover:text-fuchsia-950 hover:scale-110 transition duration-300 ease-in-out"
+          className="illu mt-7 hover:cursor-pointer hover:text-fuchsia-950 hover:scale-110 transition duration-300 ease-in-out"
         >
           About
         </p>
-        <p className="ml-16 mt-7 hover:cursor-pointer hover:text-fuchsia-950 hover:scale-110 transition duration-300 ease-in-out ">
+        <p className="illu ml-16 mt-7 hover:cursor-pointer hover:text-fuchsia-950 hover:scale-110 transition duration-300 ease-in-out ">
           Contact
         </p>
-        <p className="ml-16 mt-7 hover:cursor-pointer hover:text-fuchsia-950 hover:scale-110 transition duration-300 ease-in-out">
+        <p className="illu ml-16 mt-7 hover:cursor-pointer hover:text-fuchsia-950 hover:scale-110 transition duration-300 ease-in-out">
           Services
         </p>
-        <p className="ml-16 mt-7 hover:cursor-pointer hover:text-fuchsia-950 hover:scale-110 transition duration-300 ease-in-out">
+        <p className="illu ml-16 mt-7 hover:cursor-pointer hover:text-fuchsia-950 hover:scale-110 transition duration-300 ease-in-out">
           Community
         </p>
       </div>
-      <div className=" lg:w-1/1  mt-52 ml-28">
-        <h1 className="text-4xl">
+      <div className="discodiv lg:w-1/1  mt-52 ml-28">
+        <h1 className=" text-4xl">
           Discover, Connect, Thrive:<br></br> Where Every Moment Matters!
         </h1>
       </div>
-      <div className="float-left lg:w-1/1  ml-28 mt-4">
+      <div className="paradiv float-left lg:w-1/1  ml-28 mt-4 w-[500px] h-28">
+
         <h1 className="text-1xl font-montserrat">
-          Welcome to Sociafy! Dive into a world of connections. Share <br></br>
-          passions, discover interests, connect. Sociafy: Your go-to <br></br>
+          Welcome to Sociafy! Dive into a world of connections. Share 
+          passions, discover interests, connect. Sociafy: Your go-to 
           platform for meaningful connections. Let's Sociafy together!
         </h1>
         <Link href="/Signup">
@@ -51,20 +55,22 @@ export default function Home() {
           </button>
         </Link>
       </div>
-      <div
+      <div className="welcome"
         style={{
-          width: "550px",
-          height: "433px",
+          width: "580px",
+          height: "444px",
           marginTop: "-200px",
           marginLeft: "740px",
+          // backgroundColor:"red"
         }}
       >
         {" "}
-        <img src="newcom.png" alt="iluuuuuuuuuuu" />
+        <img className="illu w-[580px]" src="newcom.png" alt="iluuuuuuuuuuu" />
       </div>
 
       <svg
-        style={{ marginTop: "-89px" }}
+      className="illu"
+        style={{ marginTop: "-100px" }}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320"
       >

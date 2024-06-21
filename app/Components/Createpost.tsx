@@ -13,6 +13,7 @@ import toast from "react-hot-toast";
 import { GlobalContext } from "./context/globalContext";
 import Delete from "./Delete";
 import ClipLoader from "react-spinners/ClipLoader";
+import '/common.css'
 
 const style = {
   position: "absolute",
@@ -128,10 +129,6 @@ export const Createpost: React.FC<NotificationProps> = ({
   };
 
   const userid = typeof localStorage !== 'undefined' ? localStorage.getItem("userid") : null;
-
-  
-
-
   const handleApi = async (post: File) => {
     const usernteid = typeof localStorage !== 'undefined' ? localStorage.getItem("userid") : null;
     const usernamee = typeof localStorage !== 'undefined' ? localStorage.getItem("username") : null;
@@ -207,6 +204,8 @@ export const Createpost: React.FC<NotificationProps> = ({
     }
   };
 
+  const [liked, setLiked] = useState(false);
+
   const fetchLike = async (id: any) => {
     const usernteid = typeof localStorage !== 'undefined' ? localStorage.getItem("userid") : null;
     const datas = {
@@ -225,7 +224,7 @@ export const Createpost: React.FC<NotificationProps> = ({
           return item;
         });
         setPost(updatedLikes);
-        toast.success("liked");
+        setLiked(!liked);
       }
     } catch (error) {
       toast.error("something error");
@@ -244,7 +243,9 @@ export const Createpost: React.FC<NotificationProps> = ({
   };
 
   return (
-    <div>
+    <>
+    <div >
+      <section>
       <input
         ref={fileInputRef}
         onChange={handleFile}
@@ -416,10 +417,10 @@ export const Createpost: React.FC<NotificationProps> = ({
         <svg
           onClick={() => fetchLike(item._id)}
           xmlns="http://www.w3.org/2000/svg"
-          fill="none"
+          fill={liked ? "red" : "none"}
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          stroke="currentColor"
+          stroke={liked ? "red" : "currentColor"}
           className="float-left w-8 h-8 mr-1 ml-6 cursor-pointer"
         >
           <path
@@ -451,14 +452,14 @@ export const Createpost: React.FC<NotificationProps> = ({
         <div className="flex mt-2">
           <input
             type="text"
-            className="w-[300px] ml-32 px-4 py-2 rounded-l-md shadow-md border border-gray-700 bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+            className="w-[300px] ml-32 px-4 py-2 rounded-l-2xl shadow-md border border-gray-700 bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
             placeholder="Add a Comment..."
             value={inputValue}
             onChange={handleChange}
           />
           <button
             onClick={() => fetchComment(item._id)}
-            className="px-4 py-2 rounded-r-md bg-blue-500 text-white hover:bg-blue-600 focus:outline-none"
+            className="px-4 py-2 rounded-r-2xl bg-blue-500 text-white hover:bg-blue-600 focus:outline-none"
           >
             Submit
           </button>
@@ -481,8 +482,9 @@ export const Createpost: React.FC<NotificationProps> = ({
     
   ))}
 
-
+</section>
     </div>
+    </>
   );
 };
 

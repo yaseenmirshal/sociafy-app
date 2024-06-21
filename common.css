@@ -131,74 +131,6 @@
   }
 }
 
-/* 
-.label {
-  height: 30px;
-  width: 70px;
-  background-color: #ffffff;
-  border-radius: 30px;
-  -webkit-box-shadow: inset 0 0 5px 4px rgba(255, 255, 255, 1),
-    inset 0 0 20px 1px rgba(0, 0, 0, 0.488), 10px 20px 30px rgba(0, 0, 0, 0.096),
-    inset 0 0 0 3px rgba(0, 0, 0, 0.3);
-  box-shadow: inset 0 0 5px 4px rgba(255, 255, 255, 1),
-    inset 0 0 20px 1px rgba(0, 0, 0, 0.488), 10px 20px 30px rgba(0, 0, 0, 0.096),
-    inset 0 0 0 3px rgba(0, 0, 0, 0.3);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  cursor: pointer;
-  position: relative;
-  -webkit-transition: -webkit-transform 0.4s;
-  transition: -webkit-transform 0.4s;
-  transition: transform 0.4s;
-}
-
-.label:hover {
-  -webkit-transform: perspective(100px) rotateX(5deg) rotateY(-5deg);
-  transform: perspective(100px) rotateX(5deg) rotateY(-5deg);
-}
-
-#checkbox:checked ~ .label:hover {
-  -webkit-transform: perspective(100px) rotateX(-5deg) rotateY(5deg);
-  transform: perspective(100px) rotateX(-5deg) rotateY(5deg);
-}
-
-#checkbox {
-  display: none;
-}
-
-#checkbox:checked ~ .label::before {
-  left: 25px;
-  background-color: #000000;
-  background-image: linear-gradient(315deg, #000000 0%, #414141 70%);
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-
-.label::before {
-  position: absolute;
-  content: "";
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  background-color: #000000;
-  background-image: linear-gradient(
-    130deg,
-    #757272 10%,
-    #ffffff 11%,
-    #726f6f 62%
-  );
-  left: 10px;
-  -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3), 10px 10px 10px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3), 10px 10px 10px rgba(0, 0, 0, 0.3);
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-} */
-
-/* The switch - the box around the slider */
 .switch {
   font-size: 17px;
   position: relative;
@@ -207,7 +139,6 @@
   height: 2em;
 }
 
-/* Hide default HTML checkbox */
 .switch input {
   opacity: 0;
   width: 0;
@@ -249,3 +180,91 @@ input:checked + .slider:before {
   transform: translateX(100%);
   box-shadow: inset 15px -4px 0px 15px #fff000;
 }
+/* Hide elements on small screens */
+@media (max-width: 736px) {
+  .illu{
+    display: none;
+  }
+  .welcome{
+    width: 600px;
+    display: none;
+  }
+  .discodiv{
+    width: 300px;
+    margin-left: 40px;
+    margin-top: 120px;
+  }
+  .socimg{
+    width: 170px !important;
+    margin-left: 25px !important;
+  }
+  .paradiv{
+    margin-left: 40px;
+    width: 300px;
+    margin-bottom: 20px;
+  }
+  .signilu{
+    display: none;
+  }
+  .signdiv{
+    margin-left: 0px !important;
+    width: 5px !important;
+    
+
+  }
+  .sign2div{
+    margin-left: 20px;
+    width: fit-content;
+    margin-top: 80px;
+    
+  }
+  .signsoc{
+    margin-left: 100px !important;
+    width: 150px !important;
+  }
+  .glad{
+    width: 300px;
+    height: 30px;
+    
+    margin-top: -120px;
+  }
+  .already{
+    width: 200px;
+    height: 20px;
+    margin-top: -30px;
+   
+  }
+  .google{
+    display: none;
+  }
+  .googlogo{
+    display: none;
+  }
+  .superman{
+    display: none;
+  }
+  .logdiv{
+    margin-left: 20px;
+    margin-top: -20px;
+  }
+  .dont{
+    width: 200px;
+    height: 20px;
+  }
+  .profilebox{
+    display: none;
+  }
+  .homesidebar{
+    display: none;
+  }
+  .notification{
+    display: none;
+  }
+  .feedbox{
+    width: max-content !important;
+  }
+
+
+}
+
+
