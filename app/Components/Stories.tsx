@@ -10,7 +10,7 @@ export const Stories: React.FC<NotificationProps> = ({
   return (
     <div>
       <div>
-        <h1 className="text-xl font-bold ml-7 mt-7">Stories</h1>
+        <h1 className="storiestext text-xl font-bold ml-7 mt-7">Stories</h1>
         <div
           className="addstorydiv float-left ml-7 flex justify-center border-2 border-slate-400 border-dashed cursor-pointer"
           style={{

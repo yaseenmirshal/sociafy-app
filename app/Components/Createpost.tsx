@@ -244,8 +244,8 @@ export const Createpost: React.FC<NotificationProps> = ({
 
   return (
     <>
-    <div >
-      <section>
+    <div style={{backgroundColor:isWhite ? "red" : "white"}} className="h-[100%] w-screen ">
+      {/* <section > */}
       <input
         ref={fileInputRef}
         onChange={handleFile}
@@ -253,7 +253,7 @@ export const Createpost: React.FC<NotificationProps> = ({
         accept="image/*"
         style={{ display: "none" }}
       />
-      <button onClick={handleOpen} className="ml-[46px] mt-5 btn btn--primary">
+      <button onClick={handleOpen} className="createpost ml-[46px] mt-5 btn btn--primary">
         <span className="btn-inner">
           <span className="btn-label">
             <svg
@@ -459,8 +459,9 @@ export const Createpost: React.FC<NotificationProps> = ({
             onChange={handleChange}
           />
           <button
+          
             onClick={() => fetchComment(item._id)}
-            className="px-4 py-2 rounded-r-2xl bg-blue-500 text-white hover:bg-blue-600 focus:outline-none"
+            className="commentbutton px-4 py-2 rounded-r-2xl bg-blue-500 text-white hover:bg-blue-600 focus:outline-none"
           >
             Submit
           </button>
@@ -483,7 +484,7 @@ export const Createpost: React.FC<NotificationProps> = ({
     
   ))}
 
-</section>
+{/* </section> */}
     </div>
     </>
   );

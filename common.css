@@ -215,7 +215,7 @@ input:checked + .slider:before {
   .sign2div{
     margin-left: 20px;
     width: fit-content;
-    margin-top: 80px;
+    margin-top: 70px;
     
   }
   .signsoc{
@@ -245,7 +245,7 @@ input:checked + .slider:before {
   }
   .logdiv{
     margin-left: 20px;
-    margin-top: -20px;
+    margin-top: -60px;
   }
   .dont{
     width: 200px;
@@ -262,17 +262,19 @@ input:checked + .slider:before {
   }
   .feedbox{
     /* display: none; */
-    width: max-content !important;
+    width: 750px !important;
+    /* background-color: blue !important; */
   }
   .postdiv{
-    margin-left:20px;
-    width: 320px !important;
+    /* justify-self: center; */
+    margin-left: 15px !important;
+    width: 345px !important;
     height: 590px !important;
     
   }
   .postimg{
-    width: 290px !important;
-    height: 320px !important;
+    width: 315px !important;
+    height: 325px !important;
     margin-left: 15px !important;
     border-radius: 15px !important;
   }
@@ -283,19 +285,28 @@ input:checked + .slider:before {
   }
   .commentbox{
     margin-left: 0px;
-    padding: 0px !important;
+    padding: -10px !important;
     width: 200px !important;
+    margin-bottom: 10px ;
+    height: 35px !important;
   }
+ .commentbutton{
+  margin-bottom: 10px ;
+  height: 35px !important;
+  padding-top: 5px !important;
+}
+
   .descdiv{
     width: 280px !important;
   }
   .deletebox{
-    margin-left: 270px !important;
+    margin-left: 300px !important;
   }
   .storydiv{
     width: 50px !important;
     height: 50px !important;
-    margin-left: 10px !important;
+    margin-left: 15px !important;
+    margin-top: 10px !important;
   }
   .sotryhiden{
     display: none;
@@ -310,6 +321,18 @@ input:checked + .slider:before {
   .addstorydiv{
     width: 50px !important;
     height: 50px !important;
+    margin-top: 10px !important;
+    margin-left: 20px !important;
+  }
+  .search{
+    display: none;
+  }
+  .storiestext{
+    font-size: medium;
+  }
+  .createpost{
+    margin-left: 190px;
+    margin-top: -90px;
   }
 
 }
