@@ -244,7 +244,7 @@ export const Createpost: React.FC<NotificationProps> = ({
 
   return (
     <>
-    <div style={{backgroundColor:isWhite ? "#1A0033" : "white"}} className="h-[100%] w-screen ">
+    <div style={{backgroundColor:isWhite ? "#1A0033" : "white"}} className="h-[100%]  ">
       {/* <section > */}
       <input
         ref={fileInputRef}

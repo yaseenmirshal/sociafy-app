@@ -25,7 +25,7 @@ const page = (e: any) => {
       <div
      className="feedbox h-[100%] w-screen"
      style={{backgroundColor:isWhite ? "red" : "white"}} 
-        // style={{  height: "100vh", backgroundColor:isWhite ? "#1A0033" : "white"}}
+        // style={{ height: "100vh", backgroundColor:isWhite ? "#1A0033" : "white"}}
       >
         <div
           className="homesidebar float-left"
