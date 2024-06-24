@@ -86,35 +86,32 @@ export const Createpost: React.FC<NotificationProps> = ({
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
+
       try {
         const response = await instance.get("/user");
         setUsers(response.data); 
       } catch (error) {
         console.log("Error fetching users:", error);
       }
-      finally {
-        setLoading(false); // End loading
-      }
+     
     };
     fetchData();
   }, []);
-
-
-
   
   useEffect(() => {
-  console.log("Users:");
+  // console.log("Users:");
   users.forEach((user: any) => {
     // console.log(user._id);
 
     const matchingPost = post.find((item: any) => item.userId === user._id);
-    // console.log(matchingPost,'this is mathcing post ');
+    console.log(matchingPost,'this is mathcing post ');
+    // console.log(users);
+    
     // console.log(matchingPost.userId,'this is matching post ');
     
     
     if (matchingPost) {
-      console.log(`Username for ${matchingPost}`);
+      // console.log(`Username for ${matchingPost}`);
     }
   });
  
@@ -133,7 +130,6 @@ export const Createpost: React.FC<NotificationProps> = ({
     const usernteid = typeof localStorage !== 'undefined' ? localStorage.getItem("userid") : null;
     const usernamee = typeof localStorage !== 'undefined' ? localStorage.getItem("username") : null;
   
-    
     const formData = new FormData();
     formData.append("file", post);
     formData.append("desc", description);
@@ -155,18 +151,18 @@ export const Createpost: React.FC<NotificationProps> = ({
       try {
         const response = await instance.get(`/posts/${userid}/timeline`);
         if (response.status === 200) {
-          console.log(response.data, "thos is post dattss");
+          // console.log(response.data, "thos is post dattss");
 
           setPost(response.data);
           const newPostIds = response.data.map((item: any) => item.comments);
-          // console.log(newPostIds, 'nokraaa');
+      
         }
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
-  }, []);
+  }, [setPost,post]);
 
   const handleChange = (e: any) => {
     setInputValue(e.target.value);
@@ -346,16 +342,10 @@ export const Createpost: React.FC<NotificationProps> = ({
         </Fade>
       </Modal>
 
-      <Data.Provider value={likeCount}>
-        {loading ? (
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
-            <ClipLoader size={150} color={"#123abc"} loading={loading} />
-          </div>
-        ) : (
+     
           <Stories  isWhite={isWhite} />
-        )}
-      </Data.Provider>
-      {/* <Stories isWhite={isWhite} /> */}
+        
+      
 
       {post && post.map((item: any, index: any) => (
        
@@ -418,19 +408,22 @@ export const Createpost: React.FC<NotificationProps> = ({
         <svg
           onClick={() => fetchLike(item._id)}
           xmlns="http://www.w3.org/2000/svg"
-          fill={liked ? "red" : "none"}
+          fill={setPost ? "none" : "none"}
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          stroke={liked ? "red" : "currentColor"}
+          stroke={setPost ? "white" : "currentColor"}
           className="float-left w-8 h-8 mr-1 ml-6 cursor-pointer"
         >
+
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
             d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
           />
         </svg>
-        <h1 className="float-left mt-1 mr-6"></h1>
+        <h1 className="float-left mt-1 mr-6">
+        {item.likes?.length}
+        </h1>
         
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -447,7 +440,7 @@ export const Createpost: React.FC<NotificationProps> = ({
           />
         </svg>
         <h1 style={{ paddingTop: "5px" }} className="float-left">
-          {/* {item?item.comments.length:0} */}
+          {item.comments?.length}
         </h1>
 
         <div className="commentdiv flex mt-2">

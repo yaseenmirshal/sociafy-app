@@ -4,6 +4,8 @@ import Link from 'next/link';
 import '/common.css'
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import instance from '../instence/instence';
+
 
 
 function page() {
@@ -15,12 +17,12 @@ function page() {
   const handleSubmit = async (e:any)=>{
     try{
     e.preventDefault();
-    const response  = await axios.post('https://social-media-5ukj.onrender.com/auth/login',{email:email,password:password})
+    const response  = await instance.post('/auth/login',{email:email,password:password})
     console.log(response)
     if(email == email) localStorage.setItem('role','user')
     localStorage.setItem('token',response.data.token)
 
-    const kona = await axios.get('https://social-media-5ukj.onrender.com/user/')
+    const kona = await instance.get('/user/')
     let proo = (kona.data)
     
     const pdct = proo.find((value:any)  => value.email==email);

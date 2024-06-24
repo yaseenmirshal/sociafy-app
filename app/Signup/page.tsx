@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 import '/common.css'
+import instance from "../instence/instence";
 
 function Page() {
   const [username, setUsername] = useState("");
@@ -11,7 +12,7 @@ function Page() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    axios.post("https://social-media-5ukj.onrender.com/auth/register", {
+    instance.post("https://social-media-5ukj.onrender.com/auth/register", {
       username,
       password,
       email,

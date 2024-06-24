@@ -4,9 +4,9 @@ import "/common.css";
 import Link from "next/link";
 import Notification from "../Components/Notification";
 import Profilebox from "../Components/Profilebox";
-
 import Createpost from "../Components/Createpost";
 import Settings from "../Components/Settings";
+import Loading from "../Components/Loading";
 
 const page = (e: any) => {
   const [imageIndex, setImageIndex] = useState(0);
@@ -20,7 +20,18 @@ const page = (e: any) => {
     setImageIndex((prevIndex) => (prevIndex === 0 ? 1 : 0));
   };
 
-  return (
+  const [dataLoaded, setDataLoaded] = React.useState(true);
+
+  React.useEffect(() => {
+    // Simulate data loading
+    setTimeout(() => {
+      setDataLoaded(false);
+    }, 1000); // Adjust timeout as needed
+  }, []);
+
+  return dataLoaded ? (
+    <Loading/>
+  ):(
     <>
       <div
      className="feedbox h-[100%] w-screen"
